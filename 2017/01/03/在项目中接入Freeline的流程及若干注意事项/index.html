@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>在项目中接入Freeline的流程及若干注意事项 | 得沉得住气</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在项目中接入Freeline的流程及若干注意事项">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在项目中接入Freeline的流程及若干注意事项">
+<meta property="og:url" content="http://yoursite.com/2017/01/03/在项目中接入Freeline的流程及若干注意事项/index.html">
+<meta property="og:site_name" content="得沉得住气">
+<meta property="og:description" content="在项目中接入Freeline的流程及若干注意事项">
+<meta property="og:image" content="https://www.freelinebuild.com/img/freeline-as-plugin.jpg">
+<meta property="og:updated_time" content="2017-01-03T11:31:46.839Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在项目中接入Freeline的流程及若干注意事项">
+<meta name="twitter:description" content="在项目中接入Freeline的流程及若干注意事项">
+<meta name="twitter:image" content="https://www.freelinebuild.com/img/freeline-as-plugin.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="得沉得住气" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">得沉得住气</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在项目中接入Freeline的流程及若干注意事项" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/03/在项目中接入Freeline的流程及若干注意事项/" class="article-date">
+  <time datetime="2017-01-03T11:28:48.000Z" itemprop="datePublished">2017-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Freeline/">Freeline</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在项目中接入Freeline的流程及若干注意事项
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="请阅读完全文之后再按照本教程进行操作！磨刀不误砍柴工！"><a href="#请阅读完全文之后再按照本教程进行操作！磨刀不误砍柴工！" class="headerlink" title="请阅读完全文之后再按照本教程进行操作！磨刀不误砍柴工！"></a>请阅读完全文之后再按照本教程进行操作！磨刀不误砍柴工！</h3><h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>对于 Windows 系统来说，需要提前安装 Python 2.7+（Freeline 暂时还不支持 Python 3+），安装完之后需要重启一下 Android Studio。</p>
+<p>对于 Linux/Mac 系统，如果已经安装了 Python 3+，推荐将其 alias 设为 python3，再单独安装 Python 2.7+，并作为默认的 Python 指令，避免与 Android Studio 插件自动运行的 python 命令冲突，导致无法正常使用插件。</p>
+<h2 id="二、接入方法"><a href="#二、接入方法" class="headerlink" title="二、接入方法"></a>二、接入方法</h2><ul>
+<li><h3 id="步骤一：Android-Studio-插件"><a href="#步骤一：Android-Studio-插件" class="headerlink" title="步骤一：Android Studio 插件"></a>步骤一：Android Studio 插件</h3>在最新版本的 Freeline 插件中，提供了自动化一键接入的方式，不需要像以前一样手动修改build.gradle配置文件了。</li>
+</ul>
+<p>在Android Studio中，通过以下路径Preferences → Plugins → Browse repositories，搜索“freeline”，并安装。</p>
+<ul>
+<li><h3 id="步骤二：命令行方式接入"><a href="#步骤二：命令行方式接入" class="headerlink" title="步骤二：命令行方式接入"></a>步骤二：命令行方式接入</h3>配置 project-level 的 build.gradle，加入 freeline-gradle 的依赖：<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="string">'com.antfortune.freeline:gradle:x.x.x'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后，在主 module 的 build.gradle 中，应用 freeline 插件的依赖：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apply <span class="string">plugin:</span> <span class="string">'com.antfortune.freeline'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果是在插件中接入，在项目根目录的gradle文件中添加依赖和应用即可。</p>
+<h2 id="三、初始化"><a href="#三、初始化" class="headerlink" title="三、初始化"></a>三、初始化</h2><p>在完成上述步骤之后，需要对工程进行Freeline的初始化工作。此时Android Studio下方的状态栏会多出一个“freeline”的选项，点开后就是普通的命令行窗口。在该窗口输入以下命令，完成初始化的工作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradlew initFreeline -Pmirror</div></pre></td></tr></table></figure></p>
+<p>其中 -Pmirror 表示使用国内的镜像下载Gradle以及其他所需文件。Gradle的版本在 gradle-wrapper.properties 文件中定义。gradlew 命令是指使用gradle wrapper从网上下载对应的Gradle版本，不依赖本地的Gradle版本。</p>
+<p>但是！！！有时使用国内镜像下载依然十分的慢，因此可以使用如下方法替换。</p>
+<ul>
+<li>下载对应版本的Gradle至本地。可以在<a href="https://tower.im/projects/3d55b583e70847b39aaf892406b126eb/dirs/d43e49b75db94cefaf4f9a4a942d8929/" target="_blank" rel="external">组内共享地址</a>以及<a href="https://services.gradle.org/distributions" target="_blank" rel="external">这里</a>下载所需要的Gradle版本。然后保存在自己存放Gradle的目录里，可以参考<a href="http://blog.csdn.net/yyh352091626/article/details/51490976" target="_blank" rel="external">这篇文章</a>。</li>
+<li>使用如下命令完成初始化。将gradlew换成了gradle，表示使用本地gradle。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle initFreeline -Pmirror / gradlew initFreeline -Pmirror</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>初始化的过程会持续较长的一段时间，请耐心等待。</p>
+<h2 id="四、全量包及增量包"><a href="#四、全量包及增量包" class="headerlink" title="四、全量包及增量包"></a>四、全量包及增量包</h2><p>如果是在插件里应用或者工程没有配置productFlavor,则可以不进行下述配置，直接打全量包。当工程含有 productFlavor 的时候，需要指定一个 flavor，如果未指定 flavor，则可能造成编译失败报错退出。具体如下形式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    freeline &#123;</div><div class="line">        productFlavor &quot;legou&quot;</div><div class="line">        ... // 具体的配置内容</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>要使用Freeline的功能，首先要将打全量包安装到设备上，而且要注意全量包与直接使用run的包有冲突，因此需要先将设备上安装的使用run方法的应用卸载。使用如下命令完成全量包的安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python freeline.py -f</div></pre></td></tr></table></figure></p>
+<p>全量包的安装也会消耗较长的时间，请耐心等待。</p>
+<p>在全量包的安装完成之后，就可以使用Freeline的快速安装功能了，直接点击工具栏的Run Freeline按钮，就可以享受Freeline带来的开发效率的提升啦！<br><img src="https://www.freelinebuild.com/img/freeline-as-plugin.jpg" alt="image"></p>
+<p>若在编译过程中出现错误，在对工程进行了若干修改之后准备再次编译，需要先执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle clean / gradlew clean</div></pre></td></tr></table></figure></p>
+<p>命令来清除之前编译的缓存等，然后再重新编译。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/03/在项目中接入Freeline的流程及若干注意事项/" data-id="cixhh1a4d0001fshhn6m89few" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Freeline/">Freeline</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Freeline/">Freeline</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Freeline/">Freeline</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Freeline/" style="font-size: 10px;">Freeline</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/01/03/在项目中接入Freeline的流程及若干注意事项/">在项目中接入Freeline的流程及若干注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/03/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 得沉得住气<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
